@@ -29,7 +29,7 @@ public class MainViewModel extends ViewModel implements CategoryCallBack {
 
     @Override
     public void onSuccess(List<Category> categories) {
-        
+
         _categoriesLiveData.postValue(categories);
     }
 

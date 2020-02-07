@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.freshmarket.R;
-import com.example.freshmarket.adpters.CategoryAdpter;
+import com.example.freshmarket.adpters.CategoryAdapter;
 import com.example.freshmarket.models.Category;
 import com.example.freshmarket.utlites.OnItemClickListeners;
 import com.example.freshmarket.viewmodel.MainViewModel;
@@ -21,7 +21,7 @@ import static com.example.freshmarket.utlites.Constant.CATEGORY_DATA;
 
 
 public class MainActivity extends AppCompatActivity implements OnItemClickListeners {
-    CategoryAdpter adapter;
+    CategoryAdapter adapter;
     MainViewModel mViewModel;
     RecyclerView recyclerViewCategory;
 
@@ -45,11 +45,12 @@ public class MainActivity extends AppCompatActivity implements OnItemClickListen
             @Override
             public void onChanged(List<Category> categories) {
 
-                adapter = new CategoryAdpter(MainActivity.this, categories);
+                adapter = new CategoryAdapter(MainActivity.this, categories);
                 RecyclerView.LayoutManager layoutManager = new GridLayoutManager(MainActivity.this, 2);
                 recyclerViewCategory.setLayoutManager(layoutManager);
                 recyclerViewCategory.setAdapter(adapter);
                 adapter.setOnItemClickListener(MainActivity.this);
+
             }
         });
     }
