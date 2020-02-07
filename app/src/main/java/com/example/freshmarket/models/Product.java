@@ -15,22 +15,7 @@ public class Product {
     public Product() {
     }
 
-    /**
-     *
-     * @param price
-     * @param name
-     * @param productImg
-     * @param weight
-     * @param id
-     */
-    public Product(String id, String name, String weight, String price, String productImg) {
-        super();
-        this.id = id;
-        this.name = name;
-        this.weight = weight;
-        this.price = price;
-        this.productImg = productImg;
-    }
+
 
     public String getId() {
         return id;
