@@ -1,41 +1,38 @@
 package com.example.freshmarket.models;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import com.google.gson.annotations.SerializedName;
+
 import java.util.List;
 
-public class Category {
+public class Category implements Parcelable {
 
     private String id;
     private String name;
+    @SerializedName("category_img")
     private String categoryImg;
     private List<Product> products = null;
 
-    /**
-     * No args constructor for use in serialization
-     *
-     */
-    public Category() {
+
+    protected Category(Parcel in) {
+        id = in.readString();
+        name = in.readString();
+        categoryImg = in.readString();
     }
 
-    public Category(String name, String categoryImg) {
-        this.name = name;
-        this.categoryImg = categoryImg;
-    }
+    public static final Creator<Category> CREATOR = new Creator<Category>() {
+        @Override
+        public Category createFromParcel(Parcel in) {
+            return new Category(in);
+        }
 
-    /**
-     *
-     * @param name
-     * @param id
-     * @param categoryImg
-     * @param products
-     */
-
-    public Category(String id, String name, String categoryImg, List<Product> products) {
-        super();
-        this.id = id;
-        this.name = name;
-        this.categoryImg = categoryImg;
-        this.products = products;
-    }
+        @Override
+        public Category[] newArray(int size) {
+            return new Category[size];
+        }
+    };
 
     public String getId() {
         return id;
@@ -69,4 +66,15 @@ public class Category {
         this.products = products;
     }
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(id);
+        dest.writeString(name);
+        dest.writeString(categoryImg);
+    }
 }

@@ -7,8 +7,8 @@ import java.util.List;
 import retrofit2.Call;
 import retrofit2.http.GET;
 
-public interface marketService {
+public interface MarketService {
 
-    @GET("https://5bcce576cf2e850013874767.mockapi.io/task/categories")
-    Call<List<Category>> getdataMarket();
+    @GET("task/categories")
+    Call<List<Category>> getDataMarket();
 }
