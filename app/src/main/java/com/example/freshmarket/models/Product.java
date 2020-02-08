@@ -1,12 +1,19 @@
 package com.example.freshmarket.models;
 
-public class Product {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import com.google.gson.annotations.SerializedName;
+
+public class Product  implements Parcelable {
 
     private String id;
     private String name;
     private String weight;
     private String price;
+    @SerializedName("product_img")
     private String productImg;
+
 
     /**
      * No args constructor for use in serialization
@@ -16,6 +23,25 @@ public class Product {
     }
 
 
+    protected Product(Parcel in) {
+        id = in.readString();
+        name = in.readString();
+        weight = in.readString();
+        price = in.readString();
+        productImg = in.readString();
+    }
+
+    public static final Creator<Product> CREATOR = new Creator<Product>() {
+        @Override
+        public Product createFromParcel(Parcel in) {
+            return new Product(in);
+        }
+
+        @Override
+        public Product[] newArray(int size) {
+            return new Product[size];
+        }
+    };
 
     public String getId() {
         return id;
@@ -57,5 +83,18 @@ public class Product {
         this.productImg = productImg;
     }
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(id);
+        dest.writeString(name);
+        dest.writeString(weight);
+        dest.writeString(price);
+        dest.writeString(productImg);
+    }
 }
 

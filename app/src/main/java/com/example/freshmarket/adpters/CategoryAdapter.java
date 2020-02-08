@@ -24,8 +24,6 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Holder
     Context context;
     OnItemClickListeners mListener;
 
-
-
     public void setOnItemClickListener(OnItemClickListeners mListener) {
         this.mListener = mListener;
     }
@@ -33,10 +31,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Holder
     public CategoryAdapter(Context context, List<Category> categories) {
         this.context = context;
         this.categories = categories;
-
     }
-
-
 
     @NonNull
     @Override
@@ -48,9 +43,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Holder
 
     @Override
     public void onBindViewHolder(@NonNull Holder holder, int position) {
-
         holder.onBinding(context, categories.get(position), mListener);
-
     }
 
     @Override
@@ -59,10 +52,8 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Holder
     }
 
     public static class Holder extends RecyclerView.ViewHolder {
-
         ImageView categoryImage;
         TextView categoryName;
-
         public Holder(@NonNull View itemView) {
             super(itemView);
             categoryImage = itemView.findViewById(R.id.catagroyImg);
@@ -73,7 +64,6 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Holder
             String url = category.getCategoryImg();
             Picasso.with(context).load(url).into(categoryImage);
             categoryName.setText(category.getName());
-
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -82,7 +72,5 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Holder
             });
         }
     }
-
-
 }
 
