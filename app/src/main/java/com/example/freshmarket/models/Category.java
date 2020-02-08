@@ -13,13 +13,14 @@ public class Category implements Parcelable {
     private String name;
     @SerializedName("category_img")
     private String categoryImg;
-    private List<Product> products = null;
+    private List<Product> products ;
 
 
     protected Category(Parcel in) {
         id = in.readString();
         name = in.readString();
         categoryImg = in.readString();
+        products = in.readArrayList(Category.class.getClassLoader());
     }
 
     public static final Creator<Category> CREATOR = new Creator<Category>() {
@@ -76,5 +77,6 @@ public class Category implements Parcelable {
         dest.writeString(id);
         dest.writeString(name);
         dest.writeString(categoryImg);
+        dest.writeList(products);
     }
 }

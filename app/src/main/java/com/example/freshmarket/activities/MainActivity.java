@@ -50,19 +50,14 @@ public class MainActivity extends AppCompatActivity implements OnItemClickListen
                 recyclerViewCategory.setLayoutManager(layoutManager);
                 recyclerViewCategory.setAdapter(adapter);
                 adapter.setOnItemClickListener(MainActivity.this);
-
             }
         });
     }
-
-
     @Override
     public void onItemClick(Category category) {
         Intent intent = new Intent(this, ProductActivity.class);
         intent.putExtra(CATEGORY_DATA, category);
         startActivity(intent);
-
     }
-
 }
 
