@@ -2,7 +2,9 @@ package com.example.freshmarket.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.Html;
+import android.util.Log;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -17,6 +19,8 @@ public class OnBoardingActivity extends AppCompatActivity {
     private LinearLayout mDotsLayout;
     private SliderAdapter sliderAdapter;
     private TextView[] mDots;
+    Handler handler ;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,9 +60,19 @@ public class OnBoardingActivity extends AppCompatActivity {
             addDotsIndicator(position);
 
             if (position   == mDots.length - 1) {
-                Intent intent = new Intent(OnBoardingActivity.this, MainActivity.class);
-                startActivity(intent);
-                finish();
+                handler = new Handler();
+                 handler.postDelayed(new Runnable() {
+                     @Override
+                     public void run() {
+                         Intent intent = new Intent(OnBoardingActivity.this, MainActivity.class);
+                         startActivity(intent);
+                         finish();
+
+                     }
+                 },800);
+
+
+
             }
         }
 
